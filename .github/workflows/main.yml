@@ -1,16 +1,16 @@
-on:
-  schedule:
-    - cron: 00 00 * * *
+name: CI
+
+on: [push]
 
 jobs:
-  bilibili_job:
-    runs-on: ubuntu-18.04
+  build:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout master
-        uses: actions/checkout@v2
-      - name: Main
-        uses: ./
-        env:
-          account: ${{ secrets.ACCOUNT }}
-          password: ${{ secrets.PASSWORD }}
+      - uses:  actions/checkout@v1
+      - name: Run a one-line script
+        run: echo Hello, world!
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to bulid
+          echo test, and deploy your project.
 
