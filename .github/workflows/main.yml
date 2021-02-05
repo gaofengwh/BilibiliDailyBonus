@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-  env:
+    env:
       ENABLE_52POJIE: ${{secrets.ENABLE_52POJIE0}}
     runs-on: ubuntu-latest
     steps:
