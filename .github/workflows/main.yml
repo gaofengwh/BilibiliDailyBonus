@@ -1,14 +1,22 @@
 name: CI
 
-on: [push]
+on: 
+  push:
+  workflow_dispatch:
 
 jobs:
   build:
+  env:
+      ENABLE_52POJIE: ${{secrets.ENABLE_52POJIE0}}
+
     runs-on: ubuntu-latest
     steps:
       - uses:  actions/checkout@v1
       - name: Run a one-line script
-        run: echo Hello, world!
+        if: ${{ env.ENABLE_52POJIE }}
+        env:
+         enable: ${{ env.ENABLE_52POJIE }}
+        run: echo Hello, world! ${enable}
       - name: Run a multi-line script
         run: |
           echo Add other actions to bulid
